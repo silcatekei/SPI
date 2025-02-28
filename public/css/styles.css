@@ -1,0 +1,453 @@
+/* styles.css - Consolidated CSS */
+
+/* Default Light Mode Styles */
+
+/* Adjust background color to accommodate the background image */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    /* Adjust transparency as needed */
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    z-index: -1;
+}
+
+
+/* General Mica Styling */
+.mica-background {
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Admission and Contact Sections */
+#admission,
+#contact {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    border-radius: 10px;
+    padding: 30px;
+    margin-top: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form styling */
+.form-control {
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.form-control:focus {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+/*Button Styling*/
+.btn-primary,
+.btn-success {
+    background-color: rgba(40, 167, 69, 0.8);
+    border-color: rgba(40, 167, 69, 0.9);
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover,
+.btn-success:hover {
+    background-color: rgba(40, 167, 69, 1);
+    border-color: rgba(40, 167, 69, 1);
+    transform: scale(1.05); /* Slightly enlarge the button */
+    transition: transform 0.2s ease-in-out; /* Smooth transition */
+}
+
+/* Style for the apply now button */
+.apply-now-container {
+  margin-top: 30px;
+  text-align: center; /* Center the button */
+}
+
+.apply-now-button {
+    display: inline-block;
+    padding: 15px 40px; /* Make it bigger */
+    font-size: 1.5em; /* Increase font size */
+    font-weight: bold;
+    background-color: rgba(40, 167, 69, 0.9); /* Slightly more opaque */
+    border-color: rgba(40, 167, 69, 1);
+    color: white !important; /* Ensure text is always white */
+    border-radius: 8px; /* More rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transitions */
+    text-decoration: none; /* Remove underline from link */
+}
+
+.apply-now-button:hover {
+    background-color: rgba(40, 167, 69, 1);
+    transform: scale(1.1); /* Even more noticeable enlargement */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
+}
+
+/* Make sure the button is visible in dark mode */
+body.dark-mode .apply-now-button {
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1); /* Adjusted shadow for dark mode */
+}
+
+body.dark-mode .apply-now-button:hover {
+    box-shadow: 0 6px 8px rgba(255, 255, 255, 0.2); /* Adjusted hover shadow for dark mode */
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: rgba(40, 167, 69, 0.2) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    color: white !important; /* Default to white for dark mode */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Navbar text black in light mode */
+body:not(.dark-mode) .navbar-brand,
+body:not(.dark-mode) .nav-link {
+  color: #000 !important;
+  text-shadow: none; /* Remove text-shadow in light mode */
+}
+
+.navbar-brand img {
+    margin-right: 10px;
+    height: 40px;
+}
+
+.nav-link {
+    color: white !important; /* Default to white for dark mode */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.nav-link:hover {
+    color: #ddd !important;
+}
+
+ /* Dark Mode Navbar Text Color (override light mode) */
+body.dark-mode .navbar-brand,
+body.dark-mode .nav-link {
+  color: white !important;  /* White text in dark mode */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Keep the shadow */
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+/* Hero Styles */
+.hero {
+    color: white;
+    padding: 40px 0 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 0;
+}
+
+.hero>* {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1,
+.hero p {
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Features Styles */
+.features {
+    padding: 50px 0;
+}
+
+.feature-box {
+    text-align: center;
+    border: none;
+}
+
+.feature-box i {
+    font-size: 48px;
+    color: #28a745;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: rgba(52, 58, 64, 0.8);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+/* Modal Styles */
+#studentPortalModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    /* margin: 15% auto;  Removed this */
+    position: absolute; /* Add this */
+    top: 50%;          /* Add this */
+    left: 50%;         /* Add this */
+    transform: translate(-50%, -50%); /* Add this - centers the popup */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 600px; /* Added max-width for larger screens */
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Styles for the login form within the modal */
+#loginForm {
+    margin-top: 20px;
+}
+
+#loginForm .form-group {
+    margin-bottom: 15px;
+}
+
+/* Minimal Dark Mode Styles */
+body.dark-mode {
+    background-color: #222;
+    color: #eee;
+}
+
+body.dark-mode::before {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.dark-mode .mica-background {
+    background-color: rgba(34, 34, 34, 0.6);
+    /* Darker mica background */
+    color: #eee;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.05);
+    /* Subtle shadow */
+}
+
+.dark-mode #admission,
+#contact {
+    background-color: rgba(34, 34, 34, 0.8);
+    color: #eee;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .form-control {
+    background-color: #444;
+    color: #eee;
+    border: 1px solid #666;
+}
+
+.dark-mode .form-control:focus {
+    background-color: #555;
+    color: #eee;
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.dark-mode .navbar {
+    background-color: rgba(40, 167, 69, 0.4) !important;
+}
+
+.dark-mode .footer {
+    background-color: rgba(52, 58, 64, 1);
+}
+
+.dark-mode .modal-content {
+    background-color: #333;
+    color: #eee;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode .close-button {
+    color: #eee;
+}
+
+ /* Dark Mode Navbar Text Color (override light mode) */
+body.dark-mode .navbar-brand,
+body.dark-mode .nav-link {
+  color: white !important;  /* White text in dark mode */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Keep the shadow */
+}
+
+/* Slider Styles */
+#imageSlider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    height: 400px;
+}
+
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+}
+
+.slide {
+    min-width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    background: none;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.slide-overlay h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    display: none;
+}
+
+.slide-overlay p {
+    font-size: 1.2em;
+    display: none;
+}
+
+.slider-nav {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.slider-nav a {
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    margin: 0 5px;
+    text-indent: -9999px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.slider-nav a.active {
+    background-color: white;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    z-index: 1050 !important;
+}
+.modal-backdrop {
+    z-index: 1040 !important; /* Below the modal */
+    background-color: rgba(0, 0, 0, 0.5) !important; /* Adjust transparency as needed */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    /* margin: 15% auto;  Removed this */
+    position: absolute; /* Add this */
+    top: 50%;          /* Add this */
+    left: 50%;         /* Add this */
+    transform: translate(-50%, -50%); /* Add this - centers the popup */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 600px; /* Added max-width for larger screens */
+}
+.modal-dialog {
+    max-width: 400px; /* Example: Adjust as needed */
+    margin: 1.75rem auto; /* Center horizontally (Bootstrap default is often fine) */
+}
+/* The Close Button */
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Styles for the login form within the modal */
+#enrollmentForm {
+    margin-top: 20px;
+}
+
+#enrollmentForm .form-group {
+    margin-bottom: 15px;
+}
