@@ -24,9 +24,9 @@
             </div>
         </div>
         <nav class="slider-nav">
-            <a href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
+            <a href="#" data-slide="1">1</a>
+            <a href="#" data-slide="2">2</a>
+            <a href="#" data-slide="3">3</a>
         </nav>
     </div>
 
@@ -36,3 +36,63 @@
     </div>
 
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const sliderWrapper = document.querySelector('.slider-wrapper');
+    const slides = document.querySelectorAll('.slide');
+    const navLinks = document.querySelectorAll('.slider-nav a');
+    const slideCount = slides.length;
+    let slideIndex = 0;
+    let intervalId;
+
+    function showSlide(index) {
+        if (index < 0) {
+            slideIndex = slideCount - 1;
+        } else if (index >= slideCount) {
+            slideIndex = 0;
+        } else {
+            slideIndex = index;
+        }
+
+        const translateX = -slideIndex * 100 + '%';
+        sliderWrapper.style.transform = 'translateX(' + translateX + ')';
+
+        // Update active navigation link
+        navLinks.forEach(link => link.classList.remove('active'));
+        navLinks[slideIndex].classList.add('active');
+    }
+
+    function goToSlide(index) {
+        showSlide(index);
+        resetInterval(); // Reset the interval after manual navigation
+    }
+
+    function autoSlide() {
+        showSlide(slideIndex + 1);
+    }
+
+    function startInterval() {
+        intervalId = setInterval(autoSlide, 5000); // Change slide every 5 seconds
+    }
+
+    function resetInterval() {
+        clearInterval(intervalId);
+        startInterval();
+    }
+
+
+    // Initialize slider
+    showSlide(slideIndex);
+    startInterval();
+
+    // Navigation links click handlers
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const slideNumber = parseInt(this.getAttribute('data-slide')) - 1;
+            goToSlide(slideNumber);
+        });
+    });
+});
+</script>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPI - Enrollment Form</title>
+    <title>SKILL-POWER INSTITUTE</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
@@ -163,10 +163,24 @@
         }
 
         /* Styles for labels of radio buttons*/
-        .student-type-radio label{
-            font-weight: normal;  /*Making label font weight as normal*/
+        .student-type-radio label {
+            font-weight: normal; /*Making label font weight as normal*/
             cursor: pointer; /*Making the cursor pointer on hover*/
         }
+
+          /* Center the modal */
+          .modal-dialog {
+                display: flex;
+                align-items: center;
+                min-height: calc(100% - 0.5rem * 2); /*Added some spacing on top and bottom*/
+            }
+
+            @media (min-width: 576px) {
+                .modal-dialog {
+                    max-width: 500px; /*Adjust as needed*/
+                    margin: 1.75rem auto;
+                }
+            }
     </style>
 </head>
 
@@ -299,10 +313,71 @@
             </form>
         </div>
     </div>
+   <!-- Success Modal -->
+   <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel">Success!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Enrollment submitted successfully!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="errorModalLabel">Error!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    An error occurred. Please try again.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
+          // Get the modal
+        var modal = document.getElementById("enrollmentFormModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("openEnrollmentForm");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementById("closeEnrollmentForm");
+
+        // When the user clicks the button, open the modal
+        // btn.onclick = function () {
+        //     modal.style.display = "block";
+        // }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            $('#enrollmentFormModal').modal('hide');
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                $('#enrollmentFormModal').modal('hide');
+            }
+        }
         $(document).ready(function () {
             $('.enrollment-submit-btn').on('click', function (e) {
                 let formData = new FormData();
@@ -334,13 +409,21 @@
                     contentType: false,
                     processData: false,
                     success: function (response) {
-                        alert('Enrollment submitted successfully!');
-                        console.log(response);
-                    },
-                    error: function (xhr) {
-                        alert('An error occurred. Please try again.');
-                        console.log(xhr.responseText);
-                    }
+                    // Show the success modal
+                    $('#successModal').modal('show');
+
+                    $('#successModal').on('hidden.bs.modal', function (e) {
+                        window.location.href = '/';}),
+
+                    // After the success modal is closed, hide the enrollment form
+                    $('#successModal').on('hidden.bs.modal', function (e) {
+                        $('#enrollmentFormModal').modal('hide');
+                    });
+                },
+                error: function (xhr) {
+                    // Show the error modal
+                    $('#errorModal').modal('show');
+                }
                 });
             });
         });
